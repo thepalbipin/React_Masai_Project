@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<style>
+  .gallery {
+    width: 100%;
+    object-fit: cover;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 19px; 
+    /* background-color: chocolate; */
+    margin: auto;
+    /* font-family: poppins; */
+    }   
+    
+    .image {
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+    margin: auto;
+    }
+    
+</style>
+<body>
+  <div id="root"></div>
+</body>
+</html>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+    function Gallery({children}) {
+      return( 
+      <div className="gallery">
+        {children}
+      </div>
+      );
+    }
+
+    function Image({ src }) {
+      return (
+        <img src={src} alt="Gallery Image" className="image" />
+      );
+    }
+
+    function App(){
+      return(
+        <div>
+          <h1>My Gallery</h1>
+          <Gallery>
+            <Image src="https://images.unsplash.com/photo-1665808735353-a8ead71bc7aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8N3x8fGVufDB8fHx8fA%3D%3D" />
+            <Image src="https://images.unsplash.com/photo-1665808735282-74001822ec82?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OXx8fGVufDB8fHx8fA%3D%3D" />
+            <Image src="https://images.unsplash.com/photo-1665808736412-e6030d59a7da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OHx8fGVufDB8fHx8fA%3D%3D" />
+            <Image src="https://images.unsplash.com/photo-1665808736365-4ed203dc8e4f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NHx8fGVufDB8fHx8fA%3D%3D" />
+            <Image src="https://images.unsplash.com/photo-1665808736378-37fc47e91430?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8fA%3D%3D" />
+            <Image src="https://images.unsplash.com/photo-1665808735329-31c19582323d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTB8fHxlbnwwfHx8fHw%3D" />
+            <Image src="https://images.unsplash.com/photo-1665808736337-ad9545366f67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D" />
+            <Image src="https://images.unsplash.com/photo-1665808736914-4765a17c7a21?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8fA%3D%3D0" />
+          </Gallery>
+        </div>
+      )
+    }
+
+    let reactRoot = ReactDOM.createRoot(document.querySelector("#root"));
+    reactRoot.render(<App />)
+  </script>
