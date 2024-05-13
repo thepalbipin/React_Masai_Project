@@ -13,16 +13,78 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     // Your  code will go here
+    const { useState, useEffect } = React;
 
-    function App(){
-      return(
-        <>
-        <h1>Hello World</h1>
-        </>
-      )
-    }
+    // Define a React component for the hobby submission form using useState and useEffect hooks
+    const HobbyForm = () => {
+      const [hobby, setHobby] = useState('');
+      const [hobbies, setHobbies] = useState([]);
 
-    let reactRoot = ReactDOM.createRoot(document.querySelector('#root'));
-    reactRoot.render(<App />);
+      // Load data from local storage on component mount
+      useEffect(() => {
+        const storedHobbies = JSON.parse(localStorage.getItem('submittedHobbies'));
+        if (storedHobbies) {
+          setHobbies(storedHobbies);
+        }
+      }, []);
+
+      // Function to handle input change
+      const handleInputChange = (event) => {
+        setHobby(event.target.value);
+      };
+
+      // Function to handle form submission
+      const handleSubmit = (event) => {
+        event.preventDefault(); // Prevent default form submission behavior
+        // Add the hobby to the hobbies array
+        const updatedHobbies = [...hobbies, hobby];
+        setHobbies(updatedHobbies);
+        // Store updated hobbies array in local storage
+        localStorage.setItem('submittedHobbies', JSON.stringify(updatedHobbies));
+        // Reset the input field after submission
+        setHobby('');
+      };
+
+      // Function to handle hobby deletion
+      const handleDelete = (index) => {
+        const updatedHobbies = [...hobbies];
+        updatedHobbies.splice(index, 1);
+        setHobbies(updatedHobbies);
+        localStorage.setItem('submittedHobbies', JSON.stringify(updatedHobbies));
+      };
+
+      return (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input 
+              type="text" 
+              placeholder="Add your hobby" 
+              value={hobby} 
+              onChange={handleInputChange} 
+              required
+            />
+            <button type="submit">Submit</button>
+          </form>
+          <div>
+            {hobbies.length > 0 && (
+              <ul>
+                {hobbies.map((hobby, index) => (
+                  <li key={index}>
+                    {hobby} 
+                    <button className="delete-button" onClick={() => handleDelete(index)}>Delete</button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    // Render the HobbyForm component to the root div
+    ReactDOM.render(<HobbyForm />, document.getElementById('root'));
   </script>
 </html>
+
+
+
