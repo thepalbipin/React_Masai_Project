@@ -15,12 +15,10 @@
     // Your  code will go here
     const { useState, useEffect } = React;
 
-    // Define a React component for the hobby submission form using useState and useEffect hooks
     const HobbyForm = () => {
       const [hobby, setHobby] = useState('');
       const [hobbies, setHobbies] = useState([]);
 
-      // Load data from local storage on component mount
       useEffect(() => {
         const storedHobbies = JSON.parse(localStorage.getItem('submittedHobbies'));
         if (storedHobbies) {
@@ -28,20 +26,17 @@
         }
       }, []);
 
-      // Function to handle input change
       const handleInputChange = (event) => {
         setHobby(event.target.value);
       };
 
-      // Function to handle form submission
       const handleSubmit = (event) => {
-        event.preventDefault(); // Prevent default form submission behavior
-        // Add the hobby to the hobbies array
+        event.preventDefault(); 
         const updatedHobbies = [...hobbies, hobby];
         setHobbies(updatedHobbies);
-        // Store updated hobbies array in local storage
+        
         localStorage.setItem('submittedHobbies', JSON.stringify(updatedHobbies));
-        // Reset the input field after submission
+        
         setHobby('');
       };
 
@@ -81,7 +76,6 @@
       );
     };
 
-    // Render the HobbyForm component to the root div
     ReactDOM.render(<HobbyForm />, document.getElementById('root'));
   </script>
 </html>
