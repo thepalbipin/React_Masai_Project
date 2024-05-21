@@ -14,16 +14,16 @@ function App() {
   return (
     <>
       Uncomment to get particular component
-      {/* <Counter1 /> */}
-      {/* <UsernameInput /> */}
-      {/* <ProfileUpdater /> */}
-      {/* <ScoreKeeper /> */}
-      {/* <ShowHideText /> */}
-      {/* <TaskManager /> */}
-      {/* <TextInput1 /> */}
-      {/* <ToggleMessage1 /> */}
-      {/* <UserInfo1 /> */}
-      {/* <ItemList1 /> */}
+      <Counter1 />
+      <UsernameInput />
+      <ProfileUpdater />
+      <ScoreKeeper />
+      <ShowHideText />
+      <TaskManager />
+      <TextInput1 />
+      <ToggleMessage1 />
+      <UserInfo1 />
+      <ItemList1 />
     </>
   );
 }
