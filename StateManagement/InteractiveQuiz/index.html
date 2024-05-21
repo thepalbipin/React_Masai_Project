@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    
+    function Quiz(){
+      return(
+        <div className="container">
+          <h1>Quiz App</h1>
+          <hr />
+          <h2>Which device is required for the Internet connection?</h2>
+          <ul>
+            <li>Modem</li>
+            <li>Router</li>
+            <li>LAN</li>
+            <li>Pen drive</li>
+          </ul>
+          <button>Next</button>
+          <div className="index">1 of 5 questions</div>
+        </div>
+      )
+    }
+
+    function App(){
+      return(
+        <div className="App">
+        <header className="App-header">
+          <h1>Quiz App</h1>
+          </header>
+        </div>
+      );
+    }
+
+    let reactRoot = ReactDOM.createRoot(document.querySelector('#root'));
+    reactRoot.render(<App />);
+  </script>
+</html>
