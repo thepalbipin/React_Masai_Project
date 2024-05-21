@@ -25,7 +25,8 @@ function TaskManager() {
         onChange={(e) => setTask(e.target.value)}
       />
       <button onClick={addTask}>Add Task</button>
-      <button onClick={() => {removeTask}}>Remove First Task</button>
+      <button
+        onClick={removeTask}>Remove First Task</button>
       <ul>
         {tasks.map((task, index) => (
           <li key={index}>{task}</li>
