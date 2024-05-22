@@ -16,7 +16,7 @@ function Posts() {
     try {
       let res = await axios({
         method: "get",
-        url: `https://jsonplaceholder.typicode.com/posts?_limit=10&page=${page}`,
+        url: `https://jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`,
       });
 
       setPosts(res?.data)
