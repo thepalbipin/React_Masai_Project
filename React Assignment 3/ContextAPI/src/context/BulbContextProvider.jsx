@@ -8,18 +8,20 @@ export function BulbContextProvider(props) {
   const [isOn, setIsOn] = useState(false);
 
   const switchOn = () => {
-    /*complete the missing code*/
+    setIsOn(true);
   };
 
   const switchOff = () => {
-    /*complete the missing code*/
+    setIsOn(false);
   };
 
   return (
     <BulbContext.Provider
       value={
         {
-          /*complete the missing code*/
+          isOn,
+          switchOn,
+          switchOff
         }
       }
     >
