@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const users = [
+    { "id": 1, "name": "Alice Johnson", "age": 28, "occupation": "Engineer" },
+    { "id": 2, "name": "Bob Smith", "age": 35, "occupation": "Designer" },
+    { "id": 3, "name": "Charlie Brown", "age": 40, "occupation": "Teacher" },
+    { "id": 4, "name": "Diana Prince", "age": 30, "occupation": "Architect" },
+    { "id": 5, "name": "Evan Wright", "age": 45, "occupation": "Project Manager" },
+    { "id": 6, "name": "Fiona Davis", "age": 32, "occupation": "Data Scientist" },
+    { "id": 7, "name": "George Harris", "age": 29, "occupation": "Web Developer" },
+    { "id": 8, "name": "Hannah Miller", "age": 26, "occupation": "Marketing Specialist" },
+    { "id": 9, "name": "Isaac White", "age": 34, "occupation": "Sales Manager" },
+    { "id": 10, "name": "Jane Thompson", "age": 31, "occupation": "Content Writer" },
+    { "id": 11, "name": "Kevin Harris", "age": 37, "occupation": "Graphic Designer" },
+    { "id": 12, "name": "Linda Clark", "age": 41, "occupation": "HR Manager" },
+    { "id": 13, "name": "Michael Lewis", "age": 36, "occupation": "Business Analyst" },
+    { "id": 14, "name": "Natalie Walker", "age": 33, "occupation": "Software Developer" },
+    { "id": 15, "name": "Oliver King", "age": 38, "occupation": "Financial Advisor" },
+    { "id": 16, "name": "Paul Green", "age": 27, "occupation": "UX Designer" },
+    { "id": 17, "name": "Quinn Reed", "age": 44, "occupation": "Operations Manager" },
+    { "id": 18, "name": "Rachel Adams", "age": 25, "occupation": "Social Media Manager" }
+    ];
+
+    // UserProfile component
+    function UserProfile({ user }) {
+      return (
+        <div className="profile">
+          <h3>{user.name}</h3>
+          <p>Age: {user.age}</p>
+          <p>Occupation: {user.occupation}</p>
+        </div>
+      );
+    }
+
+    // App component
+    function App() {
+      const [searchQuery, setSearchQuery] = React.useState('');
+      const [filteredUsers, setFilteredUsers] = React.useState(users);
+
+      React.useEffect(() => {
+        setFilteredUsers(
+          users.filter(user =>
+            user.name.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        );
+      }, [searchQuery]);
+
+      return (
+        <div>
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search profiles..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          {filteredUsers.map(user => (
+            <UserProfile key={user.id} user={user} />
+          ))}
+        </div>
+      );
+    }
+
+    // Render the App component
+    ReactDOM.render(<App />, document.getElementById('root'));
+
+  </script>
+</html>
