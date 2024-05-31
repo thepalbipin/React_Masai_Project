@@ -51,3 +51,4 @@ function App() {
 }
 
 export default App;
+// handling_side_effects_using_useEffect
