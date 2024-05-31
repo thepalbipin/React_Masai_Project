@@ -1,28 +1,16 @@
-import React, { useEffect, useState } from 'react';
 import './App.css';
+import FetchData from './component/FetchData';
+// import Movemouse from './component/Movemouse';
+import DocumentTitle from './component/DocumentTitle';
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-      const data = await response.json();
-      setTodos(data);
-    };
-
-    fetchTodos();
-  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Todos</h1>
-        <ul>
-          {todos.map(todo => (
-            <li key={todo.id}>{todo.title}</li>
-          ))}
-        </ul>
+        <FetchData />
+        {/* <Movemouse /> */}
+        <DocumentTitle />
       </header>
     </div>
   );
